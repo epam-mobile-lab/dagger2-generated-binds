@@ -35,7 +35,6 @@ import javax.lang.model.element.TypeElement
  */
 @SupportedAnnotationTypes("com.epam.daggerbinds.annotation.BindTo")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedOptions("generatedBindToModule")
 class DaggerBindsProcessor : AbstractProcessor() {
 
     /**
@@ -69,10 +68,6 @@ class DaggerBindsProcessor : AbstractProcessor() {
     }
 
     companion object {
-        /**
-         * Name of the processor's parameter which define name of the factory should be generated.
-         */
-        const val KEY_NAME_BIND_TO_OPTION = "generatedBindToModule"
 
         /**
          * Date time pattern for the generation comment.

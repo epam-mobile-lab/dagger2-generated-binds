@@ -64,7 +64,7 @@ Generated `Generated_BindsModule` module will be:
 @Module
 public interface Generated_BindsModule {
   @Binds
-  Service binds_com_epam_sample_ServiceImp(ServiceImp com_epam_sample_ServiceImp);
+  Service binds_com_epam_singlesubtype_ServiceImp(ServiceImp com_epam_singlesubtype_ServiceImp);
 }
 ```
 
@@ -87,8 +87,8 @@ Generated `Generated_BindsModule` module will be:
 @Module
 public interface Generated_BindsModule {
   @Binds
-  @Named("com.epam.sample.RepositoryImp1")
-  Repository binds_com_epam_sample_RepositoryImp1(RepositoryImp1 com_epam_sample_RepositoryImp1);
+  @Named("com.epam.severalsubtypes.RepositoryImp1")
+  Repository binds_com_epam_severalsubtypes_RepositoryImp1(RepositoryImp1 com_epam_severalsubtypes_RepositoryImp1);
 }
 ```
 
@@ -112,7 +112,7 @@ Generated `Generated_BindsModule` module will be:
 public interface Generated_BindsModule {
   @Binds
   @ServiceImpQ1
-  Service binds_com_epam_sample2_ServiceImp1(ServiceImp1 com_epam_sample2_ServiceImp1);
+  Service binds_com_epam_severalsubtypes_ServiceImp1(ServiceImp1 com_epam_severalsubtypes_ServiceImp1);
 }
 ```
 
