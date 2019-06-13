@@ -7,7 +7,7 @@ configure<JavaPluginConvention> {
 }
 
 application {
-    mainClassName = "com.epam.singlesubtype.Example"
+    mainClassName = "com.epam.subtypes.single.Example"
 }
 
 dependencies {

@@ -7,21 +7,21 @@ As you know Dagger matches types exactly. Therefore when you would like to provi
 ```java
 interface Service {}
 
-class ServiceImpl implements Service {
+class ServiceImp implements Service {
 
     @Inject
-    ServiceImpl()
+    ServiceImp()
 }
 ```
 
-Now we have possibility to inject `ServiceImpl`, but have no possibility to inject `Service`. To have that possibility we need to create Dagger Module like this:
+Now we have possibility to inject `ServiceImp`, but have no possibility to inject `Service`. To have that possibility we need to create Dagger Module like this:
 
 ```java
 @Module
 interface BindsModule {
 
     @Binds
-    Service bindService(ServiceImpl service)
+    Service bindService(ServiceImp service)
 }
 ```
 
@@ -41,10 +41,10 @@ In order to use DaggerBinds library a few simple steps should be done:
 interface Service {}
 
 @BindTo(interfaceType = Service.class)
-public class ServiceImpl implements Service {
+public class ServiceImp implements Service {
 
     @Inject
-    ServiceImpl()
+    ServiceImp()
 }
 ```
 
@@ -64,7 +64,7 @@ Generated `Generated_BindsModule` module will be:
 @Module
 public interface Generated_BindsModule {
   @Binds
-  Service binds_com_epam_singlesubtype_ServiceImp(ServiceImp com_epam_singlesubtype_ServiceImp);
+  Service binds_com_epam_subtypes_single_ServiceImp(ServiceImp com_epam_subtypes_single_ServiceImp);
 }
 ```
 
@@ -77,7 +77,7 @@ Let see how to use qualifiers annotation:
 
 ```java
 @BindTo(interfaceType = Repository.class, qualifier = Named.class)
-public class RepositoryImp1 implements Repository {
+public class RepositoryImpFirst implements Repository {
 }
 ```
 
@@ -87,8 +87,8 @@ Generated `Generated_BindsModule` module will be:
 @Module
 public interface Generated_BindsModule {
   @Binds
-  @Named("com.epam.severalsubtypes.RepositoryImp1")
-  Repository binds_com_epam_severalsubtypes_RepositoryImp1(RepositoryImp1 com_epam_severalsubtypes_RepositoryImp1);
+  @Named("com.epam.subtypes.severalfirst.RepositoryImpFirst")
+  Repository binds_com_epam_subtypes_severalfirst_RepositoryImpFirst(RepositoryImpFirst com_epam_subtypes_severalfirst_RepositoryImpFirst);
 }
 ```
 
@@ -97,11 +97,11 @@ public interface Generated_BindsModule {
 ```java
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ServiceImpQ1 {
+public @interface ServiceImpQFirst {
 }
 
-@BindTo(interfaceType = Service.class, qualifier = ServiceImpQ1.class)
-public class ServiceImp1 implements Service {
+@BindTo(interfaceType = Service.class, qualifier = ServiceImpQFirst.class)
+public class ServiceImpFirst implements Service {
 }
 ```
 
@@ -111,8 +111,8 @@ Generated `Generated_BindsModule` module will be:
 @Module
 public interface Generated_BindsModule {
   @Binds
-  @ServiceImpQ1
-  Service binds_com_epam_severalsubtypes_ServiceImp1(ServiceImp1 com_epam_severalsubtypes_ServiceImp1);
+  @ServiceImpQFirst
+  Service binds_com_epam_subtypes_severalfirst_ServiceImpFirst(ServiceImpFirst com_epam_subtypes_severalfirst_ServiceImpFirst);
 }
 ```
 

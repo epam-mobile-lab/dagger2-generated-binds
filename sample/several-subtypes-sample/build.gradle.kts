@@ -3,7 +3,7 @@ plugins {
 }
 
 application {
-    mainClassName = "com.epam.singlesubtype.Example"
+    mainClassName = "com.epam.subtypes.single.Example"
 }
 
 configure<JavaPluginConvention> {
