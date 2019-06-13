@@ -56,7 +56,7 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
      * Analyze files provided for this for this round of generation. Classes that satisfy all
      * requirements stores in the AnnotatedElementsData collection for further processing.
      * @param roundEnvironment container for the information about the current round of the generation.
-     * @return true - if there are classes annotated by [BindTo] for processing
+     * @return true - if there are classes annotated by [BindTo] for processing,
      *         false - otherwise.
      */
     fun process(roundEnvironment: RoundEnvironment): Boolean {
@@ -88,9 +88,9 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Get type of element that marked [BindTo] annotation
-     * @param element the type of class annotated
-     * @return type of annotated class
+     * Get type of element that marked [BindTo] annotation.
+     * @param element the type of class annotated.
+     * @return type of annotated class.
      */
     private fun getTypeElementAnnotatedBindTo(element: Element) =
         element.takeIf {
@@ -100,9 +100,10 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
         }
 
     /**
-     * Validates if annotated element is Class
-     * @param elementType type of element annotated by [BindTo] annotation
-     * @return true - if element kind is Class, false - otherwise
+     * Validates if annotated element is Class.
+     * @param elementType type of element annotated by [BindTo] annotation.
+     * @return true - if element kind is Class,
+     *         false - otherwise.
      */
     private fun validateAnnotatedElementIsClass(elementType: TypeElement) =
         if (elementType.kind != ElementKind.CLASS) {
@@ -111,17 +112,17 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
         } else true
 
     /**
-     * Gets pair of parameters from [BindTo] annotation parameters
-     * @param elementType type of element annotated by [BindTo] annotation
-     * @return pair of parameters from [BindTo] annotation parameters
+     * Gets pair of parameters from [BindTo] annotation parameters.
+     * @param elementType type of element annotated by [BindTo] annotation.
+     * @return pair of parameters from [BindTo] annotation parameters.
      */
     private fun getElementArgumentsPair(elementType: TypeElement) =
         getArgumentsPair(getArguments(getMirrorForBindTo(elementType.annotationMirrors)))
 
     /**
-     * Gets mirror of [BindTo] annotation
-     * @param annotationMirrors list of annotation mirrors which current element has
-     * @return mirror of [BindTo] annotation
+     * Gets mirror of [BindTo] annotation.
+     * @param annotationMirrors list of annotation mirrors which current element has.
+     * @return mirror of [BindTo] annotation.
      */
     private fun getMirrorForBindTo(annotationMirrors: MutableList<out AnnotationMirror>): AnnotationMirror {
         annotationMirrors.forEach { mirror ->
@@ -134,9 +135,10 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Validates if mirror for [BindTo] annotation
-     * @param type declared type of mirror
-     * @return true is declared type and [BindTo] annotation type the same, false - otherwise
+     * Validates if mirror for [BindTo] annotation.
+     * @param type declared type of mirror.
+     * @return true is declared type and [BindTo] annotation type the same,
+     *         false - otherwise.
      */
     private fun isBindToMirror(type: DeclaredType): Boolean {
         val expectedType = getTypeMirrorFrom(BindTo::class.java.canonicalName)
@@ -144,9 +146,9 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Gets list of annotation arguments from annotation mirror
-     * @param mirror is the AnnotationMirror
-     * @return list of element type which is the type of arguments
+     * Gets list of annotation arguments from annotation mirror.
+     * @param mirror is the AnnotationMirror.
+     * @return list of element type which is the type of arguments.
      */
     private fun getArguments(mirror: AnnotationMirror) =
         mirror.elementValues.map {
@@ -154,9 +156,9 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
         }
 
     /**
-     * Gets pair of parameters from [BindTo] annotation parameters
-     * @param elements list of element types (arguments) at [BindTo] annotation
-     * @return pair of parameters from [BindTo] annotation parameters
+     * Gets pair of parameters from [BindTo] annotation parameters.
+     * @param elements list of element types (arguments) at [BindTo] annotation.
+     * @return pair of parameters from [BindTo] annotation parameters.
      */
     private fun getArgumentsPair(elements: List<TypeElement>): Pair<TypeElement?, TypeElement?> {
         val interfaces: MutableList<TypeElement?> = mutableListOf()
@@ -178,11 +180,12 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
      * interfaceType cannot be null,
      * interfaceType cannot be qualifier,
      * interfaceType parameter have to be implemented by annotated class,
-     * qualifier has to be marked [Qualifier] annotation
-     * @param elementType type of element annotated by [BindTo] annotation
-     * @param interfaceElementType type of interface argument from [BindTo] annotation
-     * @param qualifierElementType type of qualifier argument from [BindTo] annotation
-     * @return true - if all requires is satisfied, false - otherwise
+     * qualifier has to be marked [Qualifier] annotation.
+     * @param elementType type of element annotated by [BindTo] annotation.
+     * @param interfaceElementType type of interface argument from [BindTo] annotation.
+     * @param qualifierElementType type of qualifier argument from [BindTo] annotation.
+     * @return true - if all requires is satisfied,
+     *         false - otherwise.
      */
     private fun validateAnnotatedElement(
         elementType: TypeElement,
@@ -210,7 +213,7 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Clears all stored data
+     * Clears all stored data.
      */
     fun clear() {
         annotatedElementsData.clear()
@@ -218,8 +221,8 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Collects all interfaces from [BindTo] and count number this interfaces
-     * @param elementType type of interface argument from [BindTo] annotation
+     * Collects all interfaces from [BindTo] and count number this interfaces.
+     * @param elementType type of interface argument from [BindTo] annotation.
      */
     private fun addInterfaceTypeElement(elementType: TypeElement) {
         typesMap.apply {
@@ -228,11 +231,11 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Validates that annotated class implement interface type which defined at the [BindTo] annotation
-     * @param elementType type of class annotated by [BindTo] annotation
-     * @param interfaceType type of interface argument from [BindTo] annotation
+     * Validates that annotated class implement interface type which defined at the [BindTo] annotation.
+     * @param elementType type of class annotated by [BindTo] annotation.
+     * @param interfaceType type of interface argument from [BindTo] annotation.
      * @return true - if annotated class implemented interface type which defined at the [BindTo] annotation,
-     *         false - otherwise
+     *         false - otherwise.
      */
     private fun validateImplementInterfaces(elementType: TypeElement, interfaceType: TypeElement?): Boolean {
         elementType.interfaces.forEach {
@@ -247,9 +250,9 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Validates is interface which defined at [BindTo] annotation has more than one implementation
+     * Validates is interface which defined at [BindTo] annotation has more than one implementation.
      * @return true - if interface has multi implementation and [BindTo] annotation has any qualifier,
-     *         false - if interface has multi implementation and but [BindTo] annotation  has not any qualifier
+     *         false - if interface has multi implementation and but [BindTo] annotation  has not any qualifier.
      */
     private fun validateIfMultiImplementations(): Boolean {
         annotatedElementsData.forEach {
@@ -268,24 +271,25 @@ internal class BindToModuleStore(processorEnvironment: ProcessingEnvironment) {
     }
 
     /**
-     * Checks if element type has [Qualifier] annotation
-     * @param elementType type element
-     * @return true - if element has [Qualifier] annotation, false = otherwise
+     * Checks if element type has [Qualifier] annotation.
+     * @param elementType type element.
+     * @return true - if element has [Qualifier] annotation,
+     *         false = otherwise.
      */
     private fun hasQualifierAnnotation(elementType: TypeElement) =
         elementType.getAnnotation(Qualifier::class.java) != null
 
     /**
-     * Gets element type from canonical name
-     * @param canonicalName type name
-     * @return TypeElement
+     * Gets element type from canonical name.
+     * @param canonicalName type name.
+     * @return TypeElement.
      */
     private fun getTypeElementFrom(canonicalName: String) = elementUtils.getTypeElement(canonicalName)
 
     /**
-     * Gets mirror type from canonical name
-     * @param canonicalName type name
-     * @return TypeMirror
+     * Gets mirror type from canonical name.
+     * @param canonicalName type name.
+     * @return TypeMirror.
      */
     private fun getTypeMirrorFrom(canonicalName: String) = getTypeElementFrom(canonicalName).asType()
 }

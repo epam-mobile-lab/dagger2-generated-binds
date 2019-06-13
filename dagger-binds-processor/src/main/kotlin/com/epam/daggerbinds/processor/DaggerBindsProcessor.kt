@@ -38,12 +38,12 @@ import javax.lang.model.element.TypeElement
 class DaggerBindsProcessor : AbstractProcessor() {
 
     /**
-     * Storage for found Classes annotated by @BindTo
+     * Storage for found Classes annotated by [BindTo].
      */
     private lateinit var store: BindToModuleStore
 
     /**
-     * Initialize [DaggerBindsProcessor] with [BindToModuleStore] instance
+     * Initialize [DaggerBindsProcessor] with [BindToModuleStore] instance.
      */
     override fun init(processingEnv: ProcessingEnvironment) {
         super.init(processingEnv)
@@ -52,7 +52,6 @@ class DaggerBindsProcessor : AbstractProcessor() {
 
     /**
      * Processes a elements of annotated classes to generate dagger binds module.
-     *
      * @param elements annotation for processing.
      * @param re container for the information about the current round of the generation.
      * @return always return true as subsequent processors doesn't need to process [BindTo] annotation.
@@ -71,7 +70,7 @@ class DaggerBindsProcessor : AbstractProcessor() {
 
         /**
          * Date time pattern for the generation comment.
-         * @see [generateBaseComment]
+         * @see [generateBaseComment].
          */
         private const val JAVADOC_DATE_PATTERN = "dd-MMMM-yyyy HH:mm"
 
