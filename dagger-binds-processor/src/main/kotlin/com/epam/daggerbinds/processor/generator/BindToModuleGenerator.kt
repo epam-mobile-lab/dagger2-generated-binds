@@ -107,8 +107,8 @@ internal class BindToModuleGenerator(pe: ProcessingEnvironment) {
 
     /**
      * Generates [Qualifier] annotation spec.
-     * @param qualifierType the source of qualifier
-     * @param typeElement the source of key
+     * @param qualifierType the source of qualifier.
+     * @param typeElement the source of key.
      * @return annotation spec [Qualifier] for binds module.
      */
     private fun generateAnnotationSpec(qualifierType: TypeElement?, typeElement: TypeElement): AnnotationSpec {

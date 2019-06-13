@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 
 /*
  * If you need to change methods name,
- * don't forget to change corresponding constant at annotation processor
+ * don't forget to change corresponding constant at annotation processor.
  */
 
 @Target(ElementType.TYPE)

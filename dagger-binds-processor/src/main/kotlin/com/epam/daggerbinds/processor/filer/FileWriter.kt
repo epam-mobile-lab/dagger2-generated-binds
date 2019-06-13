@@ -16,7 +16,6 @@
 
 package com.epam.daggerbinds.processor.filer
 
-import com.epam.daggerbinds.processor.DaggerBindsProcessor.Companion.KEY_NAME_BIND_TO_OPTION
 import com.epam.daggerbinds.processor.utils.error
 import com.epam.daggerbinds.processor.utils.note
 import com.squareup.javapoet.JavaFile
@@ -34,18 +33,12 @@ internal class FileWriter(pe: ProcessingEnvironment) {
     private val filer = pe.filer
 
     /**
-     * Package for all generated classes.
-     * If [KEY_NAME_BIND_TO_OPTION] defined - get from build, else [DEFAULT_PACKAGE].
-     */
-    private val packageName = pe.options[KEY_NAME_BIND_TO_OPTION]?.substringBeforeLast('.') ?: DEFAULT_PACKAGE
-
-    /**
      * Creates source file from [TypeSpec] using [JavaFile.builder], also using Filer(from [ProcessingEnvironment]).
-     * Path - [packageName], filename - [genClass] name.
+     * Path - [PACKAGE], filename - [genClass] name.
      * @param genClass class spec to writing in the file.
      */
     fun writeToFile(genClass: TypeSpec) {
-        val genFile: JavaFile = JavaFile.builder(packageName, genClass).build()
+        val genFile: JavaFile = JavaFile.builder(PACKAGE, genClass).build()
 
         try {
             genFile.writeTo(filer)
@@ -57,6 +50,6 @@ internal class FileWriter(pe: ProcessingEnvironment) {
     }
 
     private companion object {
-        private const val DEFAULT_PACKAGE = "com.epam.daggerbinds.bindto"
+        private const val PACKAGE = "com.epam.daggerbinds.bindto"
     }
 }

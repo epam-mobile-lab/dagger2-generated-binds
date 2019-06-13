@@ -39,30 +39,3 @@ internal fun Messager.note(
 ) {
     printMessage(Diagnostic.Kind.NOTE, msg, e, a, v)
 }
-
-internal fun Messager.mandatoryWarning(
-    msg: CharSequence,
-    e: Element? = null,
-    a: AnnotationMirror? = null,
-    v: AnnotationValue? = null
-) {
-    printMessage(Diagnostic.Kind.MANDATORY_WARNING, msg, e, a, v)
-}
-
-internal fun Messager.other(
-    msg: CharSequence,
-    e: Element? = null,
-    a: AnnotationMirror? = null,
-    v: AnnotationValue? = null
-) {
-    printMessage(Diagnostic.Kind.OTHER, msg, e, a, v)
-}
-
-internal fun Messager.warning(
-    msg: CharSequence,
-    e: Element? = null,
-    a: AnnotationMirror? = null,
-    v: AnnotationValue? = null
-) {
-    printMessage(Diagnostic.Kind.WARNING, msg, e, a, v)
-}

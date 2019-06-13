@@ -4,9 +4,9 @@ include(
 )
 
 include(
-    ":java-sample",
-    ":several-subtypes"
+    ":single-subtype-sample",
+    ":several-subtypes-sample"
 )
 
-project(":java-sample").projectDir = File(rootDir, "test-project/java-sample")
-project(":several-subtypes").projectDir = File(rootDir, "test-project/several-subtypes")
+project(":single-subtype-sample").projectDir = File(rootDir, "sample/single-subtype-sample")
+project(":several-subtypes-sample").projectDir = File(rootDir, "sample/several-subtypes-sample")
