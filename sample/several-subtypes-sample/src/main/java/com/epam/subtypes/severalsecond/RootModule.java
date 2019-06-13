@@ -6,22 +6,22 @@ import dagger.Provides;
 @Module
 public class RootModule {
     @Provides
-    public RepositoryImpFirst provideRepository1(){
+    public RepositoryImpFirst provideRepositoryFirst(){
         return new RepositoryImpFirst();
     }
 
     @Provides
-    public RepositoryImpSecond provideRepository2(){
+    public RepositoryImpSecond provideRepositorySecond(){
         return new RepositoryImpSecond();
     }
 
     @Provides
-    public ServiceImpFirst provideService1(){
+    public ServiceImpFirst provideServiceFirst(){
         return new ServiceImpFirst();
     }
 
     @Provides
-    public ServiceImpSecond provideService2(){
+    public ServiceImpSecond provideServiceSecond(){
         return new ServiceImpSecond();
     }
 
