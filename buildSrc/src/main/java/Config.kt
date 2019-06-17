@@ -13,5 +13,11 @@ object Config {
 
         private const val ktlintVersion = "0.32.0"
         const val ktlint = "com.pinterest:ktlint:$ktlintVersion"
+
+        private const val compileTestingVersion = "0.18"
+        const val compileTesting = "com.google.testing.compile:compile-testing:$compileTestingVersion"
+
+        private const val jUnitVersion = "4.12"
+        const val jUnit = "junit:junit:$jUnitVersion"
     }
 }
