@@ -6,21 +6,12 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allSource
 }
 
+def siteUrl = 'https://github.com/epam-mobile-lab/dagger2-generated-binds'
+def gitRepoUrl = 'https://github.com/epam-mobile-lab/dagger2-generated-binds.git'
+
 publishing {
     publications {
-        processor(MavenPublication) {
-            def project = project(':dagger-binds-processor')
-            from project.components.java
-            artifact sourcesJar {
-                classifier "sources"
-            }
-            groupId project.group
-            artifactId project.name
-            version project.version
-        }
-
-        annotations(MavenPublication) {
-            def project = project(':dagger-binds-annotations')
+        mavenJava(MavenPublication) {
             from project.components.java
             artifact sourcesJar {
                 classifier "sources"
@@ -35,13 +26,15 @@ publishing {
 bintray {
     user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
     key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    publications = ['processor', 'annotations']
+    publications = ['mavenJava']
     pkg {
         repo = 'maven'
         name = 'dagger2-generated-binds'
         desc = 'Annotation processor which generates dagger binds modules.'
         userOrg = 'EPAM'
         licenses = ['Apache-2.0']
+        vcsUrl = gitRepoUrl
+        websiteUrl = siteUrl
 
         version {
             name = project.version
