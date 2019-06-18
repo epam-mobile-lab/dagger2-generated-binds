@@ -24,7 +24,6 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.SupportedAnnotationTypes
-import javax.annotation.processing.SupportedOptions
 import javax.annotation.processing.SupportedSourceVersion
 import javax.annotation.processing.ProcessingEnvironment
 import javax.annotation.processing.RoundEnvironment
