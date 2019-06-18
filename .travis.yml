@@ -3,4 +3,4 @@ jdk:
   - openjdk8
 
 script:
-  - ./gradlew ktlint detekt test build
+  - gradlew ktlint detekt test build
