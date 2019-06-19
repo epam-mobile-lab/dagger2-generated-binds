@@ -21,6 +21,7 @@ dependencies {
     "ktlint"(Config.Libs.ktlint)
     testApi(Config.Libs.compileTesting)
     testApi(Config.Libs.jUnit)
+    testApi(files(Jvm.current().toolsJar))
 }
 
 tasks.withType<KotlinCompile> {
