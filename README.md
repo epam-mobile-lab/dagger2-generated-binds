@@ -122,8 +122,8 @@ Gradle dependency:
 
 ```groovy
 dependencies {
-    implementation 'com.epam.daggerbinds:annotation:1.0.0-alpha1'
-    annotationProcessor 'com.epam.daggerbinds:processor:1.0.0-alpha1'
+    implementation 'com.epam.daggerbinds:dagger-binds-annotations:1.0.0-alpha1'
+    annotationProcessor 'com.epam.daggerbinds:dagger-binds-processor:1.0.0-alpha1'
 }
 ```
 
