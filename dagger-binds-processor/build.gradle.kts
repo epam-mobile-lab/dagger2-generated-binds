@@ -1,3 +1,4 @@
+import org.gradle.internal.jvm.Jvm
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -18,6 +19,9 @@ dependencies {
     api(Config.Libs.dagger)
     api(project(":dagger-binds-annotations"))
     "ktlint"(Config.Libs.ktlint)
+    testApi(Config.Libs.compileTesting)
+    testApi(Config.Libs.jUnit)
+    testApi(files(Jvm.current().toolsJar))
 }
 
 tasks.withType<KotlinCompile> {
