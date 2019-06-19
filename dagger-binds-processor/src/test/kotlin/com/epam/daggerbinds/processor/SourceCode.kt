@@ -197,7 +197,7 @@ object SourceCode {
     }
 
     object WithError {
-        object NoQualifier{
+        object NoQualifier {
             const val superClassQualifierName = "com.epam.subtypes.severalfirst.Repository"
             const val superClass = """
             package com.epam.subtypes.severalfirst;
@@ -223,7 +223,8 @@ object SourceCode {
             }
             """
         }
-        object NoInterface{
+
+        object NoInterface {
             const val superClassQualifierName = "com.epam.subtypes.severalfirst.Repository"
             const val superClass = """
             package com.epam.subtypes.severalfirst;
@@ -240,7 +241,8 @@ object SourceCode {
             }
             """
         }
-        object InterfaceTypeIsQualifier{
+
+        object InterfaceTypeIsQualifier {
             const val superClassQualifierName = "com.epam.subtypes.severalfirst.Repository"
             const val superClass = """
             package com.epam.subtypes.severalfirst;
@@ -259,7 +261,7 @@ object SourceCode {
             """
         }
 
-        object QualifierIsNotQualifier{
+        object QualifierIsNotQualifier {
             const val superClassQualifierName = "com.epam.subtypes.severalfirst.Repository"
             const val superClass = """
             package com.epam.subtypes.severalfirst;
