@@ -1,0 +1,7 @@
+<component name="CopyrightManager">
+  <settings default="epam_open_source">
+    <module2copyright>
+      <element module="All" copyright="epam_open_source" />
+    </module2copyright>
+  </settings>
+</component>

@@ -1,0 +1,45 @@
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+def siteUrl = 'https://github.com/epam-mobile-lab/dagger2-generated-binds'
+def gitRepoUrl = 'https://github.com/epam-mobile-lab/dagger2-generated-binds.git'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from project.components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            groupId project.group
+            artifactId project.name
+            version project.version
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+    publications = ['mavenJava']
+    pkg {
+        repo = 'dagger2-generated-binds'
+        name = project.ext.bintrayName
+        desc = project.ext.bintrayDesc
+        userOrg = 'epam-mobile-cc'
+        licenses = ['Apache-2.0']
+        vcsUrl = gitRepoUrl
+        websiteUrl = siteUrl
+
+        version {
+            name = project.version
+            desc = project.ext.bintrayDesc
+            released = new Date()
+        }
+    }
+}
