@@ -2,6 +2,7 @@ import org.gradle.internal.jvm.Jvm
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 ext.set("bintrayName", "generated-binds-processor")
+ext.set("bintrayDesc", "Annotation processor which generates dagger binds modules.")
 
 plugins {
     `java-library`
