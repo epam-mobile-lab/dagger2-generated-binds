@@ -1,13 +1,15 @@
 import org.gradle.internal.jvm.Jvm
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+ext.set("bintrayName", "generated-binds-processor")
+
 plugins {
     `java-library`
     kotlin("jvm")
     id("io.gitlab.arturbosch.detekt")
 }
 
-apply{
+apply {
     from("../gradle/script/ktlint.gradle")
     from("../gradle/script/detekt.gradle")
     from("../gradle/script/publish.gradle")

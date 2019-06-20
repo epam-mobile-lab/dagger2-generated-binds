@@ -29,7 +29,7 @@ bintray {
     publications = ['mavenJava']
     pkg {
         repo = 'dagger2-generated-binds'
-        name = 'dagger2-generated-binds'
+        name = project.ext.bintrayName
         desc = 'Annotation processor which generates dagger binds modules.'
         userOrg = 'epam-mobile-cc'
         licenses = ['Apache-2.0']

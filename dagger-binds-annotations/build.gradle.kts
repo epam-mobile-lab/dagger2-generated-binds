@@ -2,7 +2,9 @@ plugins {
     `java-library`
 }
 
-apply{
+ext.set("bintrayName", "generated-binds-annotation")
+
+apply {
     from("../gradle/script/publish.gradle")
 }
 
